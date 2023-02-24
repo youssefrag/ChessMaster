@@ -1,10 +1,6 @@
-type BoardPosition = {
-  type: string;
-  color: string;
-};
+export type Square = string;
 
-type Board = BoardPosition[];
-
-export type Game = {
-  _board: Board;
+export type Move = {
+  from: Square;
+  to: Square;
 };
