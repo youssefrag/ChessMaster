@@ -11,13 +11,12 @@ import { Game } from "./board.types";
 const Board = () => {
   const [game, setGame] = useState<any>(new Chess());
 
-  console.log(game);
-
   const makeAMove = (move: any) => {
-    const gameCopy = { ...game };
-    const result = gameCopy.move(move);
+    const gameCopy = new Chess();
+    gameCopy.loadPgn(game.pgn());
+    gameCopy.move(move);
     setGame(gameCopy);
-    return result;
+    return;
   };
 
   const onDrop = (sourceSquare: any, targetSquare: any): any => {
@@ -26,6 +25,8 @@ const Board = () => {
       to: targetSquare,
       promotion: "q",
     });
+
+    console.log(move);
 
     if (move === null) return false;
   };
