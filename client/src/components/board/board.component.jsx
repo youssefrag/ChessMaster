@@ -13,6 +13,7 @@ const Board = () => {
     const gameCopy = { ...game };
     const result = gameCopy.move(move);
     setGame(gameCopy);
+    console.log(game);
     return result; // null if the move was illegal, the move object if the move was legal
   }
 
@@ -25,7 +26,21 @@ const Board = () => {
 
     // console.log(move);
 
-    console.log(game.game_over());
+    console.log("is game over?", game.game_over());
+
+    if (game.game_over()) {
+      const newGame = new Chess();
+
+      console.log(move);
+
+      if (move.color === "w") {
+        alert("Whit won! Congrats");
+      } else if (move.color === "b") {
+        alert("Black won! Congrats");
+      }
+
+      setGame(newGame);
+    }
 
     // console.log(game.fen());
 
