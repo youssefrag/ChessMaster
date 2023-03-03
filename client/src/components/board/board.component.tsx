@@ -5,49 +5,37 @@ import { Chessboard } from "react-chessboard";
 
 import { Game } from "../../types/index";
 
+import Turn from "../turn/turn.component";
+
 const Board = () => {
-  const [optionSquares, setOptionSquares] = useState<{
-    [square: string]: { background: string; borderRadius?: string };
-  }>({});
+  let [refresh, setRefresh] = useState<number>(0);
 
-  const [side, setSide] = useState<"b" | "w" | "s">("s");
-
-  const chess = new Chess();
-
-  // chess.move("e4");
-  // chess.move("e5");
-  // chess.move("f4");
-  // chess.move("a5");
-  // chess.move("a4");
-  // chess.move("h6");
+  let [game, setGame] = useState(new Chess());
 
   const makeMove = (m: { from: string; to: string; promotion?: string }) => {
     try {
-      const result = chess.move(m);
+      const result = game.move(m);
       if (result) {
-        setOptionSquares({
-          [m.from]: { background: "rgba(255, 255, 0, 0.4)" },
-          [m.to]: { background: "rgba(255, 255, 0, 0.4)" },
-        });
+        setRefresh(refresh + 1);
         return result;
       } else {
         throw new Error("invalid move");
       }
     } catch (e) {
-      setOptionSquares({});
       return false;
     }
   };
 
   useEffect(() => {
     makeMove({ from: "a2", to: "a3" });
-    makeMove({ from: "a7", to: "a6" });
-    console.log(chess.fen());
-  }, []);
+    makeMove({ from: "a7", to: "a5" });
+    makeMove({ from: "b2", to: "b4" });
+  }, [refresh]);
 
   return (
     <div style={{ width: "500px" }}>
-      <Chessboard position={chess.fen()} />
+      <Chessboard position={game.fen()} />
+      <Turn turn={game.turn().toString()}></Turn>
     </div>
   );
 };
