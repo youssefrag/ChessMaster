@@ -5,7 +5,7 @@ type TurnProp = {
 };
 
 const Turn = ({ turn }: TurnProp) => {
-  if (turn === "w") return <StyledSkeleton>It's White's turn!</StyledSkeleton>;
+  if (turn === "w") return <StyledSkeleton>It's White's Turn!</StyledSkeleton>;
   else return <StyledSkeleton>It's Black's turn</StyledSkeleton>;
 };
 
