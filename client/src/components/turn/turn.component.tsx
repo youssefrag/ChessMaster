@@ -6,7 +6,7 @@ type TurnProp = {
 
 const Turn = ({ turn }: TurnProp) => {
   if (turn === "w") return <StyledSkeleton>It's White's Turn!</StyledSkeleton>;
-  else return <StyledSkeleton>It's Black's turn</StyledSkeleton>;
+  else return <StyledSkeleton>It's Black's Turn</StyledSkeleton>;
 };
 
 export default Turn;
