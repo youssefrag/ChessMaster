@@ -27,9 +27,10 @@ const Board = () => {
   };
 
   useEffect(() => {
-    // makeMove({ from: "a2", to: "a3" });
-    // makeMove({ from: "a7", to: "a5" });
-    // makeMove({ from: "b2", to: "b4" });
+    makeMove({ from: "a2", to: "a3" });
+    makeMove({ from: "a7", to: "a5" });
+    makeMove({ from: "b2", to: "b4" });
+    makeMove({ from: "b7", to: "b7" });
   }, [refresh]);
 
   return (
