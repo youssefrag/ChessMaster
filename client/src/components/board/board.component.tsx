@@ -31,6 +31,7 @@ const Board = () => {
     makeMove({ from: "a7", to: "a5" });
     makeMove({ from: "b2", to: "b4" });
     makeMove({ from: "b7", to: "b7" });
+    makeMove({ from: "c2", to: "c3" });
   }, [refresh]);
 
   return (
